@@ -15,12 +15,8 @@ dependencies {
 
     // Testing
     testImplementation(kotlin("test"))
-    testImplementation("io.ktor:ktor-server-core:2.3.12")
-    testImplementation("io.ktor:ktor-server-netty:2.3.12")
-    testImplementation("org.apache.logging.log4j:log4j-api:2.20.0")
-    testImplementation("org.apache.logging.log4j:log4j-core:2.20.0")
-    testImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.20.0")
-    testImplementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0")
+    testImplementation(libs.bundles.ktor.server)
+    testImplementation(libs.bundles.log4j)
 }
 
 tasks.test {

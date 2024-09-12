@@ -7,11 +7,13 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import one.devos.osuv2kt.dsl.OsuUserQuery
+import one.devos.osuv2kt.models.RankStatus
 import one.devos.osuv2kt.models.Scope
 import one.devos.osuv2kt.models.oauth2.TokenResponse
 import one.devos.osuv2kt.models.user.OsuUser
 import one.devos.osuv2kt.utils.ColorDeserializer
 import one.devos.osuv2kt.utils.OffsetDateTimeDeserializer
+import one.devos.osuv2kt.utils.RankStatusDeserializer
 import java.awt.Color
 import java.time.OffsetDateTime
 
@@ -31,6 +33,7 @@ public class Osu(
     private val client: OkHttpClient = OkHttpClient()
     private val gson = GsonBuilder()
         .registerTypeAdapter(OffsetDateTime::class.java, OffsetDateTimeDeserializer())
+        .registerTypeAdapter(RankStatus::class.java, RankStatusDeserializer())
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .registerTypeAdapter(Color::class.java, ColorDeserializer())
         .setPrettyPrinting()
