@@ -113,5 +113,4 @@ public class Osu(
             gson.fromJson(body, OsuUser::class.java)
         }
     }
-
 }
