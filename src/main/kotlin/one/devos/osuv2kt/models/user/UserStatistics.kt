@@ -20,10 +20,10 @@ public data class UserStatistics(
     public val ppExp: Float,
     public val globalRank: Int?,
     public val globalRankExp: Int?,
-    public val rankedScore: Int,
+    public val rankedScore: Long,
     public val replaysWatchedByOthers: Int,
     public val totalHits: Int,
-    public val totalScore: Int,
+    public val totalScore: Long,
 
     // Optionals
     public val rankChangeSince30Days: Int?,
