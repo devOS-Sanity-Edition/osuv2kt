@@ -155,3 +155,5 @@ replay_pid*
 *.iml
 out
 gen
+
+logs/
