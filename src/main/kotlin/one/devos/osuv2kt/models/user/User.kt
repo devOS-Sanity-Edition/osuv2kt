@@ -1,5 +1,6 @@
 package one.devos.osuv2kt.models.user
 
+import com.google.gson.JsonObject
 import one.devos.osuv2kt.models.*
 import java.awt.Color
 import java.time.OffsetDateTime
@@ -58,4 +59,22 @@ public data class User(
     public val userPreferences: Any?,
 
     // Extended
+    public val coverUrl: String?,
+    public val discord: String?,
+    public val hasSupported: Boolean?,
+    public val interests: String?,
+    public val joinDate: OffsetDateTime?,
+    public val location: String?,
+    public val maxBlocks: Int?,
+    public val maxFriends: Int?,
+    public val occupation: String?,
+    public val playmode: Ruleset,
+    public val playstyle: Array<String>?,
+    public val postCount: Int,
+    public val profileHue: Int?,
+    public val profileOrder: List<String>, // TODO: this is supposed to be an Array [or list?] of ProfilePage type but it got upset
+    public val title: String?,
+    public val titleUrl: String?,
+    public val twitter: String?,
+    public val website: String?
 )
