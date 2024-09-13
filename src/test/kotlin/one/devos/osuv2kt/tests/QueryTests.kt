@@ -31,7 +31,7 @@ class QueryTests {
         startOAuthServer {
             // Query user
             val testUser = osu.queryUser {
-                user = "asojidev"
+                user = "@asojidev"
                 mode = Ruleset.STANDARD
             }
 
