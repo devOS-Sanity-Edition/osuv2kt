@@ -38,7 +38,7 @@ public data class User(
     public val scoresFirstCount: Int?,
     public val scoresRecentCount: Int?,
     public val sessionVerified: Boolean?,
-    // TODO: statistics
+    public val statistics: UserStatistics?,
     // TODO: statisticsRulesets
 
     // Extended

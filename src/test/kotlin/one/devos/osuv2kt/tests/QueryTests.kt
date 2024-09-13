@@ -30,12 +30,12 @@ class QueryTests {
         Desktop.getDesktop().browse(URI.create(osu.authorizationUrl))
         startOAuthServer {
             // Query user
-            val user = osu.queryUser {
-                user = "@asojidev"
-                mode = Ruleset.MANIA
+            val testUser = osu.queryUser {
+                user = "asojidev"
+                mode = Ruleset.STANDARD
             }
 
-            println("User: $user")
+            println("User: $testUser")
 
             // Query beatmap
             val beatmap = osu.queryBeatmap {
