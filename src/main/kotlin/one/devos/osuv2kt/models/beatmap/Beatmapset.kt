@@ -1,6 +1,9 @@
 package one.devos.osuv2kt.models.beatmap
 
+import one.devos.osuv2kt.models.Availability
+import one.devos.osuv2kt.models.Hype
 import one.devos.osuv2kt.models.Nomination
+import one.devos.osuv2kt.models.NominationsSummary
 import java.time.OffsetDateTime
 
 public data class Beatmapset(
@@ -42,19 +45,16 @@ public data class Beatmapset(
     public val trackId: Int?,
 
     // Extended
-    // TODO: availability.download_disabled - Is this inside of an object?
-    // TODO: availability.more_information - Is this inside of an object?
+    public val availability: Availability,
     public val bpm: Float?,
     public val canBeHyped: Boolean?,
     public val deletedAt: OffsetDateTime?,
     public val discussionLocked: Boolean?,
-    // TODO: hype.current - Is this inside of an object?
-    // TODO: hype.required - Is this inside of an object?
+    public val hype: Hype,
     public val isScoreable: Boolean?,
     public val lastUpdated: OffsetDateTime?,
     public val legacyThreadUrl: String?,
-    // TODO: nominations_summary.current - Is this inside of an object?
-    // TODO: nominations_summary.required - Is this inside of an object?
+    public val nominationsSummary: NominationsSummary,
     public val ranked: Int?,
     public val rankedDate: OffsetDateTime?,
     public val storyboard: Boolean?,
