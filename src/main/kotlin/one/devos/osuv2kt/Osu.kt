@@ -6,11 +6,16 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
+import one.devos.osuv2kt.dsl.BeatmapQuery
+import one.devos.osuv2kt.dsl.BeatmapQueryBuilder
 import one.devos.osuv2kt.dsl.OsuUserQuery
 import one.devos.osuv2kt.models.RankStatus
 import one.devos.osuv2kt.models.Scope
+import one.devos.osuv2kt.models.beatmap.Beatmap
+import one.devos.osuv2kt.models.beatmap.BeatmapDifficultyAttributes
 import one.devos.osuv2kt.models.oauth2.TokenResponse
-import one.devos.osuv2kt.models.user.OsuUser
+import one.devos.osuv2kt.models.user.User
+import one.devos.osuv2kt.utils.BeatmapDifficultyAttributesDeserializer
 import one.devos.osuv2kt.utils.ColorDeserializer
 import one.devos.osuv2kt.utils.OffsetDateTimeDeserializer
 import one.devos.osuv2kt.utils.RankStatusDeserializer
@@ -32,6 +37,7 @@ public class Osu(
 
     private val client: OkHttpClient = OkHttpClient()
     private val gson = GsonBuilder()
+        .registerTypeHierarchyAdapter(BeatmapDifficultyAttributes::class.java, BeatmapDifficultyAttributesDeserializer())
         .registerTypeAdapter(OffsetDateTime::class.java, OffsetDateTimeDeserializer())
         .registerTypeAdapter(RankStatus::class.java, RankStatusDeserializer())
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -96,7 +102,7 @@ public class Osu(
         return token
     }
 
-    public fun queryUser(block: OsuUserQuery.() -> Unit): OsuUser {
+    public fun queryUser(block: OsuUserQuery.() -> Unit): User {
         val query = OsuUserQuery()
             .apply(block)
             .validateExceptionally()
@@ -113,7 +119,38 @@ public class Osu(
             }
 
             val body = response.body?.string()
-            gson.fromJson(body, OsuUser::class.java)
+
+            try {
+                gson.fromJson(body, User::class.java)
+            } catch (t: Throwable) {
+                throw IllegalStateException("Failed to parse user: ${gson.toJson(body)}", t)
+            }
+        }
+    }
+
+    public fun queryBeatmap(block: BeatmapQuery.() -> Unit): Beatmap {
+        val query = BeatmapQuery()
+            .apply(block)
+            .validateExceptionally()
+
+        val request = Request.Builder()
+            .url("${BASE_URL}/beatmaps/lookup?${query.type?.name?.lowercase()}=${query.value}")
+            .header("Authorization", "Bearer ${token?.accessToken}")
+            .build()
+
+        val response = client.newCall(request).execute()
+        return response.use { response ->
+            if (!response.isSuccessful) {
+                throw IllegalStateException("Unexpected code $response")
+            }
+
+            val body = response.body?.string()
+
+            try {
+                gson.fromJson(body, Beatmap::class.java)
+            } catch (t: Throwable) {
+                throw IllegalStateException("Failed to parse beatmap: ${gson.toJson(body)}", t)
+            }
         }
     }
 }

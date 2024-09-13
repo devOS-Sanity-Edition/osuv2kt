@@ -6,16 +6,17 @@ import io.ktor.server.netty.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import one.devos.osuv2kt.Osu
+import one.devos.osuv2kt.dsl.BeatmapQuery
 import one.devos.osuv2kt.models.Ruleset
 import one.devos.osuv2kt.models.Scope
 import one.devos.osuv2kt.tests.utils.clientId
 import one.devos.osuv2kt.tests.utils.clientSecret
 import one.devos.osuv2kt.tests.utils.redirectUri
+import org.junit.jupiter.api.*
 import java.awt.Desktop
 import java.net.URI
-import kotlin.test.Test
 
-class QueryUserTests {
+class QueryTests {
 
     private val osu = Osu(
         clientId,
@@ -25,12 +26,28 @@ class QueryUserTests {
     )
 
     @Test
-    fun testUserQuery() {
+    fun run() {
         Desktop.getDesktop().browse(URI.create(osu.authorizationUrl))
-        startOAuthServer()
+        startOAuthServer {
+            // Query user
+            val user = osu.queryUser {
+                user = "@asojidev"
+                mode = Ruleset.MANIA
+            }
+
+            println("User: $user")
+
+            // Query beatmap
+            val beatmap = osu.queryBeatmap {
+                value = "1657912"
+                type = BeatmapQuery.QueryType.ID
+            }
+
+            println("Beatmap: $beatmap")
+        }
     }
 
-    private fun startOAuthServer() {
+    private fun startOAuthServer(block: () -> Unit) {
         embeddedServer(Netty, port = 5573) {
             routing {
                 get("callback") {
@@ -39,16 +56,9 @@ class QueryUserTests {
                     val code = call.parameters["code"] ?: throw IllegalArgumentException("Code not found")
                     osu.obtainAndStoreToken(code)
 
-                    // Actually test
-                    val user = osu.queryUser {
-                        user = "@asojidev"
-                        mode = Ruleset.STANDARD
-                    }
-
-                    println(user)
+                    block()
                 }
             }
         }.start(wait = true)
     }
-
 }

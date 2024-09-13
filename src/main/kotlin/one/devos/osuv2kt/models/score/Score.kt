@@ -1,5 +1,6 @@
-package one.devos.osuv2kt.models
+package one.devos.osuv2kt.models.score
 
+import one.devos.osuv2kt.models.MultiplayerScoresAround
 import java.time.OffsetDateTime
 
 public data class Score(
@@ -16,9 +17,8 @@ public data class Score(
     public val legacyScoreId: Int?,
     public val legacyTotalScore: Int,
     public val maxCombo: Int,
-    public val maximumStatistics: Any,   // this is supposed to be a type named ScoreStatistics but it's not documented?
-                                        // TODO: for Sam: here's a rust impl of ScoreStatistics https://github.com/MaxOhn/rosu-v2/blob/1db35d81f0276fc4ba46926152242d6793a46434/src/model/score.rs
-    public val mods: Any,    // TODO: same story, look at https://github.com/MaxOhn/rosu-v2/blob/1db35d81f0276fc4ba46926152242d6793a46434/src/model/score.rs
+    public val maximumStatistics: ScoreStatistics,
+    public val mods: Set<ScoreMod>,
     public val passed: Boolean,
     public val playlistItemId: Int, // only for multiplayer score
     public val pp: Float?,

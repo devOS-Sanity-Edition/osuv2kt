@@ -1,4 +1,6 @@
-package one.devos.osuv2kt.models
+package one.devos.osuv2kt.models.beatmap
+
+import one.devos.osuv2kt.models.score.Score
 
 public data class BeatmapScores(
     public val scores: Array<Score>,

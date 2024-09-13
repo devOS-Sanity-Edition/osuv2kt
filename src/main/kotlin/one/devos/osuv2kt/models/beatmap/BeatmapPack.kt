@@ -1,4 +1,4 @@
-package one.devos.osuv2kt.models
+package one.devos.osuv2kt.models.beatmap
 
 import java.time.OffsetDateTime
 

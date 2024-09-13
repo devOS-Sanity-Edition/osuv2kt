@@ -1,4 +1,4 @@
-package one.devos.osuv2kt.models
+package one.devos.osuv2kt.models.beatmap
 
 public interface BeatmapDifficultyAttributes {
     public val maxCombo: Int
