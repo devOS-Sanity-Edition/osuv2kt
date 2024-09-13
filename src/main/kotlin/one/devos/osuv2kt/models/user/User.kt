@@ -72,7 +72,7 @@ public data class User(
     public val playstyle: Array<String>?,
     public val postCount: Int,
     public val profileHue: Int?,
-    public val profileOrder: List<String>, // TODO: this is supposed to be an Array [or list?] of ProfilePage type but it got upset
+    public val profileOrder: List<String>,
     public val title: String?,
     public val titleUrl: String?,
     public val twitter: String?,
