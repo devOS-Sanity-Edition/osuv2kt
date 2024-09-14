@@ -7,12 +7,13 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import one.devos.osuv2kt.dsl.BeatmapQuery
-import one.devos.osuv2kt.dsl.BeatmapQueryBuilder
 import one.devos.osuv2kt.dsl.OsuUserQuery
+import one.devos.osuv2kt.dsl.BeatmapUserScoreQuery
 import one.devos.osuv2kt.models.RankStatus
 import one.devos.osuv2kt.models.Scope
 import one.devos.osuv2kt.models.beatmap.Beatmap
 import one.devos.osuv2kt.models.beatmap.BeatmapDifficultyAttributes
+import one.devos.osuv2kt.models.beatmap.BeatmapUserScore
 import one.devos.osuv2kt.models.oauth2.TokenResponse
 import one.devos.osuv2kt.models.user.User
 import one.devos.osuv2kt.utils.BeatmapDifficultyAttributesDeserializer
@@ -150,6 +151,32 @@ public class Osu(
                 gson.fromJson(body, Beatmap::class.java)
             } catch (t: Throwable) {
                 throw IllegalStateException("Failed to parse beatmap: ${gson.toJson(body)}", t)
+            }
+        }
+    }
+
+    public fun queryBeatmapUserScore(block: BeatmapUserScoreQuery.() -> Unit): BeatmapUserScore {
+        val query = BeatmapUserScoreQuery()
+            .apply(block)
+            .validateExceptionally()
+
+        val request = Request.Builder()
+            .url("${BASE_URL}/beatmaps/${query.beatmap}/scores/users/${query.user}?mode=${query.mode?.value}")
+            .header("Authorization", "Bearer ${token?.accessToken}")
+            .build()
+
+        val response = client.newCall(request).execute()
+        return response.use { response ->
+            if (!response.isSuccessful) {
+                throw IllegalStateException("Unexpected code $response")
+            }
+
+            val body = response.body?.string()
+
+            try {
+                gson.fromJson(body, BeatmapUserScore::class.java)
+            } catch (t: Throwable) {
+                throw IllegalStateException("Failed to parse beatmap user score: ${gson.toJson(body)}", t)
             }
         }
     }

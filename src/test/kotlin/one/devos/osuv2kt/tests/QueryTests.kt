@@ -31,19 +31,28 @@ class QueryTests {
         startOAuthServer {
             // Query user
             val testUser = osu.queryUser {
-                user = "@asojidev"
-                mode = Ruleset.STANDARD
+                this.user = "@asojidev"
+                this.mode = Ruleset.STANDARD
             }
 
             println("User: $testUser")
 
             // Query beatmap
             val beatmap = osu.queryBeatmap {
-                value = "1657912"
-                type = BeatmapQuery.QueryType.ID
+                this.value = "1657912"
+                this.type = BeatmapQuery.QueryType.ID
             }
 
             println("Beatmap: $beatmap")
+
+            // Query beatmap user score
+            val beatmapScore = osu.queryBeatmapUserScore {
+                this.user = 3178418
+                this.beatmap = 870839
+                this.mode = Ruleset.STANDARD
+            }
+
+            println("Beatmap user score: $beatmapScore")
         }
     }
 

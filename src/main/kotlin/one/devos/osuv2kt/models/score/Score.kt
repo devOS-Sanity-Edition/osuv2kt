@@ -1,5 +1,6 @@
 package one.devos.osuv2kt.models.score
 
+import com.google.gson.JsonElement
 import java.time.OffsetDateTime
 
 public data class Score(
@@ -10,7 +11,7 @@ public data class Score(
     public val classicTotalScore: Int, // only for solo_score type
     public val endedAt: OffsetDateTime,
     public val hasReplay: Boolean,
-    public val id: Int,
+    public val id: Long,
     public val isPerfectCombo: Boolean,
     public val legacyPerfect: Boolean,
     public val legacyScoreId: Int?,
@@ -35,7 +36,7 @@ public data class Score(
 
     public val beatmap: Any?,
     public val beatmapset: Any?,
-    public val currentUserAttributes: Int?,
+    public val currentUserAttributes: JsonElement?,
     public val match: Any?, // only for legacy match score
     public val position: Int?,
     public val rankCountry: Any?,
