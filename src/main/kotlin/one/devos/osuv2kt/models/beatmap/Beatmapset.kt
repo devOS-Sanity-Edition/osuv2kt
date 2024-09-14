@@ -1,5 +1,6 @@
 package one.devos.osuv2kt.models.beatmap
 
+import com.google.gson.JsonElement
 import java.time.OffsetDateTime
 
 public data class Beatmapset(
@@ -23,21 +24,21 @@ public data class Beatmapset(
 
     // Optionals
     public val beatmaps: Array<Beatmap>,
-    public val converts: Any?,
+    public val converts: JsonElement?,
     public val currentNominations: Array<BeatmapsetNomination>?,
-    public val currentUserAttributes: Any?,
-    public val description: Any?,
-    public val discussions: Any?,
-    public val events: Any?,
-    public val genre: Any?,
+    public val currentUserAttributes: JsonElement?,
+    public val description: JsonElement?,
+    public val discussions: JsonElement?,
+    public val events: JsonElement?,
+    public val genre: JsonElement?,
     public val hasFavourited: Boolean?,
-    public val language: Any?,
-    public val nominations: Any?,
+    public val language: JsonElement?,
+    public val nominations: JsonElement?,
     public val packTags: Array<String>?,
-    public val ratings: Any?,
-    public val recentFavourites: Any?,
-    public val relatedUsers: Any?,
-    public val user: Any?,
+    public val ratings: JsonElement?,
+    public val recentFavourites: JsonElement?,
+    public val relatedUsers: JsonElement?,
+    public val user: JsonElement?,
     public val trackId: Int?,
 
     // Extended

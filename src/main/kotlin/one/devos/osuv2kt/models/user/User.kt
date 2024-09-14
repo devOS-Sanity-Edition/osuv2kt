@@ -1,14 +1,15 @@
 package one.devos.osuv2kt.models.user
 
+import com.google.gson.JsonElement
 import one.devos.osuv2kt.models.*
 import java.awt.Color
 import java.time.OffsetDateTime
 
 public data class User(
     public val avatarUrl: String,
-    public val country: Any,
+    public val country: JsonElement,
     public val countryCode: String,
-    public val cover: Any,
+    public val cover: JsonElement,
     public val defaultGroup: String?,
     public val id: Long,
     public val isActive: Boolean,
@@ -28,7 +29,7 @@ public data class User(
     public val activeTournamentBanners: Array<UserProfileBanner>?,
     public val badges: Array<UserBadge>?,
     public val beatmapPlaycountsCount: Int?,
-    public val blocks: Any?,
+    public val blocks: JsonElement?,
     public val favouriteBeatmapsetCount: Int?,
     public val followUserMapping: IntArray?,
     public val followerCount: Int?,
@@ -38,23 +39,23 @@ public data class User(
     public val lovedBeatmapsetCount: Int?,
     public val mappingFollowerCount: Int?,
     // TODO: monthlyPlaycounts
-    public val page: Any?,
-    public val pendingBeatmapsetCount: Any?,
-    public val previousUsernames: Any?,
+    public val page: JsonElement?,
+    public val pendingBeatmapsetCount: JsonElement?,
+    public val previousUsernames: JsonElement?,
     public val rankHighest: UserRankHighest?,
-    public val rankHistory: Any?,
-    public val rankedBeatmapsetCount: Any?,
-    public val replaysWatchedCounts: Any?,
+    public val rankHistory: JsonElement?,
+    public val rankedBeatmapsetCount: JsonElement?,
+    public val replaysWatchedCounts: JsonElement?,
     public val scoresBestCount: Int?,
     public val scoresFirstCount: Int?,
     public val scoresRecentCount: Int?,
     public val sessionVerified: Boolean?,
     public val statistics: UserStatistics?,
     // TODO: statisticsRulesets
-    public val supportLevel: Any?,
-    public val unreadPmCount: Any?,
-    public val userAchievements: Any?,
-    public val userPreferences: Any?,
+    public val supportLevel: JsonElement?,
+    public val unreadPmCount: JsonElement?,
+    public val userAchievements: JsonElement?,
+    public val userPreferences: JsonElement?,
 
     // Extended
     public val coverUrl: String?,
