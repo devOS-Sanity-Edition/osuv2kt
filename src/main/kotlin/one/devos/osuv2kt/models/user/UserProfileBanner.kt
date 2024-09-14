@@ -2,7 +2,7 @@ package one.devos.osuv2kt.models.user
 
 import com.google.gson.annotations.SerializedName
 
-public data class ProfileBanner(
+public data class UserProfileBanner(
     public val id: Int,
     public val tournamentId: Int,
     public val image: String?,

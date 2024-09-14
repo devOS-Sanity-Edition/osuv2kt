@@ -17,7 +17,7 @@ public data class User(
     public val isOnline: Boolean,
     public val isRestricted: Boolean,
     public val isSupporter: Boolean,
-    public val kudosu: Kudosu,
+    public val kudosu: UserKudosu,
     public val lastVisit: OffsetDateTime,
     public val pmFriendsOnly: Boolean,
     public val profileColour: Color?,
@@ -25,7 +25,7 @@ public data class User(
 
     // Optionals
     public val accountHistory: Array<UserAccountHistory>?,
-    public val activeTournamentBanners: Array<ProfileBanner>?,
+    public val activeTournamentBanners: Array<UserProfileBanner>?,
     public val badges: Array<UserBadge>?,
     public val beatmapPlaycountsCount: Int?,
     public val blocks: Any?,
@@ -41,7 +41,7 @@ public data class User(
     public val page: Any?,
     public val pendingBeatmapsetCount: Any?,
     public val previousUsernames: Any?,
-    public val rankHighest: RankHighest?,
+    public val rankHighest: UserRankHighest?,
     public val rankHistory: Any?,
     public val rankedBeatmapsetCount: Any?,
     public val replaysWatchedCounts: Any?,

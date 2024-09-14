@@ -17,7 +17,7 @@ public data class Beatmap(
     // Optionals
     public val beatmapset: Beatmapset?,
     public val checksum: String?,
-    public val failtimes: Failtimes?,
+    public val failtimes: BeatmapFailtimes?,
     public val maxCombo: Int?,
 
     // Extended

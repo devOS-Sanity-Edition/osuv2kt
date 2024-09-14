@@ -24,7 +24,7 @@ public data class Beatmapset(
     // Optionals
     public val beatmaps: Array<Beatmap>,
     public val converts: Any?,
-    public val currentNominations: Array<Nomination>?,
+    public val currentNominations: Array<BeatmapsetNomination>?,
     public val currentUserAttributes: Any?,
     public val description: Any?,
     public val discussions: Any?,
@@ -41,16 +41,16 @@ public data class Beatmapset(
     public val trackId: Int?,
 
     // Extended
-    public val availability: Availability,
+    public val availability: BeatmapsetAvailability,
     public val bpm: Float?,
     public val canBeHyped: Boolean?,
     public val deletedAt: OffsetDateTime?,
     public val discussionLocked: Boolean?,
-    public val hype: Hype,
+    public val hype: BeatmapsetHype,
     public val isScoreable: Boolean?,
     public val lastUpdated: OffsetDateTime?,
     public val legacyThreadUrl: String?,
-    public val nominationsSummary: NominationsSummary,
+    public val nominationsSummary: BeatmapsetNominationsSummary,
     public val ranked: Int?,
     public val rankedDate: OffsetDateTime?,
     public val storyboard: Boolean?,

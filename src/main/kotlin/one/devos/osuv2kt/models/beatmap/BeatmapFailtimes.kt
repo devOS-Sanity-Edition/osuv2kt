@@ -1,6 +1,6 @@
 package one.devos.osuv2kt.models.beatmap
 
-public data class Failtimes(
+public data class BeatmapFailtimes(
     val exit: IntArray?,
     val fail: IntArray?
 ) {
@@ -8,7 +8,7 @@ public data class Failtimes(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Failtimes
+        other as BeatmapFailtimes
 
         if (exit != null) {
             if (other.exit == null) return false
