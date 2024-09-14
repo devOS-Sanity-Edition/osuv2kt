@@ -28,3 +28,4 @@ log4j = [
 ]
 
 [plugins]
+grgit = { id = "org.ajoberstar.grgit", version = "5.2.2"}
