@@ -1,6 +1,5 @@
 package one.devos.osuv2kt.models.beatmap
 
-import one.devos.osuv2kt.models.Failtimes
 import one.devos.osuv2kt.models.RankStatus
 import one.devos.osuv2kt.models.Ruleset
 import java.time.OffsetDateTime

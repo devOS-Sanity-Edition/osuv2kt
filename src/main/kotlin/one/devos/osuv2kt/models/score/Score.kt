@@ -1,6 +1,5 @@
 package one.devos.osuv2kt.models.score
 
-import one.devos.osuv2kt.models.MultiplayerScoresAround
 import java.time.OffsetDateTime
 
 public data class Score(

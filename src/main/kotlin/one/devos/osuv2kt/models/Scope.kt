@@ -1,6 +1,6 @@
 package one.devos.osuv2kt.models
 
-public enum class Scope(public val value: String) {
+public enum class Scope(private val value: String) {
 
     READ_CHAT("chat.read"),
     WRITE_CHAT("chat.write"),

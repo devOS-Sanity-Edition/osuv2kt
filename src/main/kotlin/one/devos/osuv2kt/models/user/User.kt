@@ -1,6 +1,5 @@
 package one.devos.osuv2kt.models.user
 
-import com.google.gson.JsonObject
 import one.devos.osuv2kt.models.*
 import java.awt.Color
 import java.time.OffsetDateTime
@@ -26,8 +25,7 @@ public data class User(
 
     // Optionals
     public val accountHistory: Array<UserAccountHistory>?,
-    // TODO: activeTournamentBanners
-    val activeTournamentBanners: Array<ProfileBanner>?,
+    public val activeTournamentBanners: Array<ProfileBanner>?,
     public val badges: Array<UserBadge>?,
     public val beatmapPlaycountsCount: Int?,
     public val blocks: Any?,

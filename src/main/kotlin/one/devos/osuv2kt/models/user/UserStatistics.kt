@@ -1,8 +1,5 @@
 package one.devos.osuv2kt.models.user
 
-import one.devos.osuv2kt.models.GradeCounts
-import one.devos.osuv2kt.models.Level
-
 public data class UserStatistics(
     public val count100: Int,
     public val count300: Int,

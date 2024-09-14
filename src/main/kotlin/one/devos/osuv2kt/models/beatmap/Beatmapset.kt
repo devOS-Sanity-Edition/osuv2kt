@@ -1,9 +1,5 @@
 package one.devos.osuv2kt.models.beatmap
 
-import one.devos.osuv2kt.models.Availability
-import one.devos.osuv2kt.models.Hype
-import one.devos.osuv2kt.models.Nomination
-import one.devos.osuv2kt.models.NominationsSummary
 import java.time.OffsetDateTime
 
 public data class Beatmapset(
