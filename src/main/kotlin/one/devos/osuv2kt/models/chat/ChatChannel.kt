@@ -1,4 +1,7 @@
-package one.devos.osuv2kt.models
+package one.devos.osuv2kt.models.chat
+
+import one.devos.osuv2kt.models.ChannelType
+import one.devos.osuv2kt.models.CurrentUserAttributes
 
 public data class ChatChannel(
     public val channelId: Int,

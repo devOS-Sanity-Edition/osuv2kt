@@ -1,4 +1,4 @@
-package one.devos.osuv2kt.models
+package one.devos.osuv2kt.models.chat
 
 public data class ChatChannelUserAttributes(
     public val canMessage: Boolean,
